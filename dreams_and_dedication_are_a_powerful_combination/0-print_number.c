@@ -1,8 +1,8 @@
 #include "my_functions.h"
-
+/*Function to print the numbers without printf*/
 void print_number(int n)
 {
-  int  digit;
+  int  digit, temp = 0;
   char char_num;
   if ( n == 0)
     {
@@ -11,34 +11,35 @@ void print_number(int n)
   else if ( n < 0)
     {
       n = n * -1 ;
-      /* while ( n > 0)
+      while ( n > 0)
 	{
 	  temp = temp * 10;
 	  temp = temp + n%10;
 	  n = n / 10;
-	  }*/
+	  }
       print_char('-');
-      while ( n > 0)
+      while ( temp > 0)
 	{
-	  digit = n % 10;
+	  digit = temp % 10;
 	  char_num = digit + '0';
 	  print_char(char_num);
+	  temp = temp / 10;
 	}
     }
   else
     {
-      /*  while ( n > 0)
+        while ( n > 0)
 	{
 	  temp = temp * 10;
 	  temp = temp + n%10;
 	  n = n / 10;
-	  }*/
-      while ( n > 0)
+	  }
+      while ( temp > 0)
 	{
-	  digit = n % 10;
+	  digit = temp % 10;
 	  char_num = digit + '0';
 	  print_char(char_num);
+	  temp = temp / 10;
 	}
     }
 }
-
