@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+/*Print all combination of 2 digits*/
 void print_combination_2(void)
 {
   int i,j;

@@ -1,3 +1,4 @@
+/*Convert to uppercase*/
 char uppercase(char c)
 {
   if ( c >= 97 && c <= 122)

@@ -1,5 +1,5 @@
 #include "my_functions.h"
-
+/*Print last digit*/
 void print_last_digit(int n)
 {
    if ( n > 0 )

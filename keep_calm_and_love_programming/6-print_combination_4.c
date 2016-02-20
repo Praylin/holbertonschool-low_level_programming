@@ -1,5 +1,5 @@
 #include "my_functions.h"
-
+/*prints - on one line - all possible combinations of two two-digit numbers*/
 void print_combination_4(void)
 {
   int i, j, k, l, n1, n2;

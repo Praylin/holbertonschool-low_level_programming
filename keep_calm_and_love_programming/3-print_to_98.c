@@ -1,4 +1,5 @@
 #include <stdio.h>
+/*Print from the given numbers to 98*/
 void print_to_98(int n)
 {
   int i;
