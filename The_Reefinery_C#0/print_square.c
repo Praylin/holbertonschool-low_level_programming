@@ -1,0 +1,48 @@
+void print_square(int n)
+{
+  int side,i,j,r;
+  if (n < 4)
+    {
+      if (n == 1)
+	{
+	  print_char('o');
+	  print_char('\n');
+	}
+      if (n == 2 || n == 3)
+	{
+	  print_char('o');
+	  print_char('o');
+	  print_char('\n');
+	}
+    }
+  else
+    { 
+	  r = n % 4;
+	  side = n - r;
+	  print_char('o');
+	  for(i = 0; i < (side/4); i++)
+	    {
+	      print_char('-');
+	    }
+	  print_char('o');
+	  print_char('\n');
+	  for(i = 0; i < (side/4); i++)
+	    {
+	      print_char('|');
+	      for(j = 0; j < (side/4); j++)
+		{
+		  print_char(' ');
+		}
+	      print_char('|');
+	      print_char('\n');
+	    }
+	  print_char('o');
+	  for(i = 0; i < (side/4); i++)
+	    {
+	      print_char('-');
+	    }
+	  print_char('o');
+	  print_char('\n');
+       
+    }
+}
