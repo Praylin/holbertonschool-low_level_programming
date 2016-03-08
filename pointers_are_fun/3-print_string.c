@@ -1,3 +1,4 @@
+/*function that prints a string.*/
 int print_char(char c);
 void print_string(char *str)
 {

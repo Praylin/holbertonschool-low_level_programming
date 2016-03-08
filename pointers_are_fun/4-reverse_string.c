@@ -1,4 +1,4 @@
-#include <stdio.h>
+/*function that reverses a string.*/
 void reverse_string(char *s)
 {
   int i, j, count = 0;
@@ -7,11 +7,12 @@ void reverse_string(char *s)
     {
       count++;
     }
-  printf("%d", count);
-  for (j = 0; j < count; j++)
+  for (i = count - 1, j = 0; i >= 0; i--, j++)
     {
-      t[j] = s[count];
-      count--;
+      t[j] = s[i];
     }
-  /* printf("%s",t);*/
+  for (i = 0; i < count; i++)
+    {
+      s[i] = t[i];
+    }
 }

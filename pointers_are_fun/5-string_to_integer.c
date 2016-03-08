@@ -1,7 +1,8 @@
+/*function that returns the first number contained in a string.*/
 int string_to_integer(char *s)
 {
   char asc;
-  int i, n[10], exp, num = 0;
+  int num = 0 , i , n[10], exp = 0;
   for (asc = 48; asc <= 57; asc++)
     {
       if (*s == asc)
@@ -37,3 +38,5 @@ int string_to_integer(char *s)
     }
     return(num);
 }
+
+
