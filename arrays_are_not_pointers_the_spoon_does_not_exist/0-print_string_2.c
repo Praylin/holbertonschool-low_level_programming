@@ -3,9 +3,11 @@ int print_char(char c);
 void print_string_2(char *str)
 {
   int i;
-  for (i = 0; str[i] != '\n'; i = i + 2)
+  for (i = 0; str[i] != '\0'; i++)
     {
-      print_char(str[i]);
+      if (i%2 == 0)
+	{
+	  print_char(str[i]);
+	}
     }
-  print_char('\n');
 }
