@@ -1,3 +1,4 @@
+/*Function to change some characters*/
 char *leet(char *s)
 {
   int i;

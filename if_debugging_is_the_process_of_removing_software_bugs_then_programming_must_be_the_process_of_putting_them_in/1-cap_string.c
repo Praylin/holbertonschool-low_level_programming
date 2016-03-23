@@ -1,3 +1,4 @@
+/*Function to capitalize the first letter of each word*/
 char *cap_string(char *s)
 {
   int i;

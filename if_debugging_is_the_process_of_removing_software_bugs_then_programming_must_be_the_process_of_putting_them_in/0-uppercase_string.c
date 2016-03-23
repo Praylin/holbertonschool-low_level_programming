@@ -1,3 +1,4 @@
+/*Function to print characters in upper case*/
 char *uppercase_string(char *c)
 {
   int i;
