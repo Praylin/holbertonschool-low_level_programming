@@ -5,6 +5,11 @@ int main(int ac, char **av)
 {
   int num1 = atoi(av[1]);
   int num2 = atoi(av[3]);
-  int operator = av[2];
-  return (*get_op_func(char operator))(num1, num2);
+  int result;
+  char operator = *av[2];
+  if (ac <= 1)
+    printf("Enter operands and operator");
+  result = (*get_op_func(operator))(num1, num2);
+  printf("%d",result);
+  return(0);
 }
