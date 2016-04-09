@@ -11,9 +11,6 @@ int (*get_op_func(char c))(int x, int y)
 {
   char arr[] = {'+', '-', '*', '/', '%'};
   int i;
-  /*for (i = 0; i < 5; i++)
-    if (c != arr[i])
-    return 1;*/
   int (*func_arr[])(int, int) = {op_add, op_sub, op_mul, op_div, op_mod};
   for (i = 0; i < 5; i++)
     {
