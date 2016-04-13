@@ -1,3 +1,4 @@
+/*get_op_func.c*/
 #include <stdio.h>
 
 int op_add(int a,int b);

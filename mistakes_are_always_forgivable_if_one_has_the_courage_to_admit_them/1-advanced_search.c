@@ -1,3 +1,4 @@
+/*check the elements of array*/
 int advanced_search(int *array, int size, int (*check_func)(int))
 {
   int i;

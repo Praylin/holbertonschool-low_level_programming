@@ -1,3 +1,4 @@
+/*calculator main.c*/
 #include <stdlib.h>
 #include <stdio.h>
 int (*get_op_func(char c))(int, int);
