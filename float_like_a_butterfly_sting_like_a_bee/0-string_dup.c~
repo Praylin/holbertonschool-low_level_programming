@@ -1,0 +1,12 @@
+#include <stdlib.h>
+
+char *string_dup(char *str)
+{
+  char *s = NULL;
+  /*int len = strlen(str);*/
+  int i;
+  s = malloc(sizeof(*str));
+  for(i = 0; str[i] != '\0'; i ++)
+  s[i] = str[i];
+  return s;
+}

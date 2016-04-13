@@ -1,0 +1,13 @@
+#include <stdlib.h>
+
+char *string_concat(char *s1, char *s2)
+{
+  char *s = NULL;
+  int i;
+  s = malloc(sizeof(*s1 + *s2));
+  for (i = 0; s1[i] != '\0'; i++)
+    s[i] = s1[i];
+  for (i; s2[i] != '\0'; i++)
+    s[i] = s2[i];
+  return s;
+}

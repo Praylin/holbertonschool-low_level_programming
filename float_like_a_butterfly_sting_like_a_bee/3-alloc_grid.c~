@@ -1,0 +1,6 @@
+#include <stdlib.h>
+int **alloc_grid(int width, int height)
+{
+  int grid[width][height] = {0};
+  return grid;
+}
