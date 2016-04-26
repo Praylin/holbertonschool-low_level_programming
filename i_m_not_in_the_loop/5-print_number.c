@@ -1,25 +1,46 @@
 #include "my_functions.h"
-#include <stdlib.h>
-
+/*Function to print the numbers without printf*/
 void print_number(int n)
 {
-  int temp, factor = 1;
+  int  digit, temp = 0;
   char char_num;
-  if ( n > 0 )
+  if ( n == 0)   /*If number is 0, print 0 */
     {
-  temp = n;
-  while(temp)
-    {
-      temp = temp / 10;
-      factor = factor * 10;
+      print_char(n+'0');
     }
-  while (factor > 1)
+  else if ( n < 0) /* If number < 0 */
     {
-      factor = factor / 10;
-      char_num = n + '0';
-      print_char(char_num);
-      n = n % factor;
+      n = n * -1 ;
+      while ( n > 0) /*Reverse the number */
+	{
+	  temp = temp * 10;
+	  temp = temp + n%10;
+	  n = n / 10;
+	}
+      print_char('-');
+      while ( temp > 0) /*Split and print the digits */
+	{
+	  digit = temp % 10;
+	  char_num = digit + '0';
+	  print_char(char_num);
+	  temp = temp / 10;
+	}
     }
+  else  /* Do the same with positive numbers */
+    {
+      while ( n > 0)
+	{
+	  temp = temp * 10;
+	  temp = temp + n%10;
+	  n = n / 10;
+	}
+      while ( temp > 0)
+	{
+	  digit = temp % 10;
+	  char_num = digit + '0';
+	  print_char(char_num);
+	  temp = temp / 10;
+	}
     }
 }
 
