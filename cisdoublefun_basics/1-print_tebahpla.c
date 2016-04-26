@@ -2,7 +2,10 @@
 int print_char(char c);
 void print_tebahpla(void)
 {
-  char i;
-  for(i = 'z'; i >= 'a'; i--)
-    print_char(i);
+  char i = 'z';
+  while( i >= 'a')
+    {
+      print_char(i);
+      i--;
+    }
 }

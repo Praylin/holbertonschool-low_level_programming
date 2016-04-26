@@ -2,10 +2,16 @@
 int print_char(char c);
 void print_base16(void)
 {
-  int i;
-  char j;
-  for (i = 0; i <= 9; i++)
-    print_char(i+'0');
-  for (j = 'A'; j <= 'F'; j++)
-    print_char(j);
+  int i = 0;
+  char j = 'A';
+  while (i <= 9)
+    {
+      print_char(i+'0');
+      i++;
+    }
+  while (j <= 'F')
+    {
+      print_char(j);
+      j++;
+    }
 }
