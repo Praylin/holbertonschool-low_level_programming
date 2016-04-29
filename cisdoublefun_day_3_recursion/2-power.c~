@@ -1,0 +1,12 @@
+int power(int x, int y)
+{
+  int pow = 1;
+  if ( (y < 0) || (x < 0)  )
+    return -1;
+  while (y > 1)
+    {
+      pow = pow * x;
+      y--;
+    }
+  return pow;
+}
