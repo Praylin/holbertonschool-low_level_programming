@@ -5,13 +5,13 @@ int main(void)
 {
   int r;
 
-  r = factorial(26);
+  r = factorial(1);
   printf("%d\n", r);
   r = factorial(5);
   printf("%d\n", r);
   r = factorial(10);
   printf("%d\n", r);
-  r = factorial(19999);
+  r = factorial(26000);
   printf("%d\n", r);
   return (0);
 }
