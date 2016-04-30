@@ -1,3 +1,4 @@
+/*Square root of a number using loop*/
 int square_root(int n)
 {
   int x = 0;

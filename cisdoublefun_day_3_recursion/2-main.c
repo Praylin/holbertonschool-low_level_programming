@@ -9,7 +9,7 @@ int main(void)
   printf("%d\n", r);
   r = power(1024, 0);
   printf("%d\n", r);
-  r = power(19999999, 16);
+  r = power(256896546, 16);
   printf("%d\n", r);
   r = power(5, 2);
   printf("%d\n", r);

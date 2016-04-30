@@ -1,3 +1,4 @@
+/*Check a number is prime or not*/
 int whether_prime(int n, int counter);
 int is_prime_number(int n)
 {

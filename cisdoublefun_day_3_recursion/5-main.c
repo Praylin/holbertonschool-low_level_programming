@@ -7,7 +7,7 @@ int main(void)
 
   r = square_root(1);
   printf("%d\n", r);
-  r = square_root(2048);
+  r = square_root(1024);
   printf("%d\n", r);
   r = square_root(16);
   printf("%d\n", r);

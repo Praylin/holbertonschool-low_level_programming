@@ -1,3 +1,4 @@
+/*Factorial using recursion*/
 int factorial(int n)
 {
   long fact = n;

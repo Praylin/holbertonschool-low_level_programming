@@ -1,3 +1,4 @@
+/*Find power of a number using loop*/
 int power(int x, int y)
 {
   long pow = 1;

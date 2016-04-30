@@ -1,3 +1,5 @@
+/*Find factorial using loop*/
+/*Multiply c with n till c < n)*/
 int factorial(int n)
 {
   int c = 1;

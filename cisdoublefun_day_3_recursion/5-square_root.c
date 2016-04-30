@@ -1,3 +1,4 @@
+/*Square root of a number using recursion*/
 int find_root(int x, int n);
 int square_root(int n)
 {
