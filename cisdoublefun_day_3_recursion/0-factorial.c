@@ -1,21 +1,23 @@
 int factorial(int n)
 {
-  long i;
-  i = n;
+  int c = 1;
+  long fact = n;
   if ((n == 0) || (n == 1))
-    return 1;
-  else if ( n < 0 )
-    return -1;
+    fact = 1;
+  else if (n < 0)
+    fact = -1;
   else
     {
-      n = n - 1;
-      while(n >= 1)
+      while(c < n)
 	{
-	  i = i * n;
-	  n--;
-	  if (i > 2147483647)
-	    return -1;
+	  fact = fact * c;
+	  if ((fact > 2147483647) || (fact < -2147483648))
+	    {
+	      fact = -1;
+	      break;
+	    }
+	  c++;
 	}
     }
-  return ((int)i);
+  return ((int)fact);
 }

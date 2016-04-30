@@ -9,9 +9,9 @@ int main(void)
   printf("%d\n", r);
   r = factorial(5);
   printf("%d\n", r);
-  r = factorial(10);
+  r = factorial(26);
   printf("%d\n", r);
-  r = factorial(-102400);
+  r = factorial(1024000);
   printf("%d\n", r);
   return (0);
 }
