@@ -1,0 +1,11 @@
+/*function that prints a string.*/
+void print_string(char *str);
+int print_char(char c);
+void print_string(char *str)
+{
+  int i;
+  for (i = 0; str[i] != '\0'; i++)
+    {
+      print_char(str[i]);
+    }
+}
