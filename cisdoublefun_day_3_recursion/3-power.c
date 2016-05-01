@@ -10,7 +10,7 @@ int power(int x, int y)
     pow1 = x;
   else if(y == 0 || x == 1)
     pow1 = 1;
-  else if((pow1 > 2147483647) || (pow1 < -2147483648))
+  else if((pow1 > (2147483647 / x)))
     pow1 = -1;
   else if (y > 0)
     {

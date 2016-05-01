@@ -1,3 +1,4 @@
+/*Check whether a string is palindrome or not*/
 int find_len(char *s);
 int compare(int i,char *s, int mid, int count);
 int is_palindrome(char *s)

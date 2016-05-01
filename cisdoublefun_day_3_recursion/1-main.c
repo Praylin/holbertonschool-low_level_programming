@@ -11,7 +11,7 @@ int main(void)
   printf("%d\n", r);
   r = factorial(10);
   printf("%d\n", r);
-  r = factorial(26000);
+  r = factorial(2600000);
   printf("%d\n", r);
   return (0);
 }

@@ -1,3 +1,4 @@
+/*Reverse a string*/
 char *rev_string(char *str)
 {
   int i = 0, j = 0;

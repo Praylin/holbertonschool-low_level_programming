@@ -1,3 +1,4 @@
+/*Convert string to uppercase*/
 char *uppercase_string(char *s)
 {
   int i;

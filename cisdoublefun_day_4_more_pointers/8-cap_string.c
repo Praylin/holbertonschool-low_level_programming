@@ -1,3 +1,4 @@
+/*capitalizes all words of a string*/
 char *cap_string(char *s)
 {
   int i;

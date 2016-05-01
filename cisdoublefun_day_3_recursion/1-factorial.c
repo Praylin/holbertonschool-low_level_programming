@@ -9,6 +9,8 @@ int factorial(int n)
     fact = -1;
   else if((fact > 2147483647) || (fact < -2147483648))
     fact = -1;
+  else if((fact > (2147483647 / n)))
+    fact = -1;
   else if (n > 0)
     {
       fact = fact * factorial(n - 1);

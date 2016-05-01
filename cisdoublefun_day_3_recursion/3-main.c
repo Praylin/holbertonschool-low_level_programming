@@ -7,9 +7,9 @@ int main(void)
 
   r = power(1, 10);
   printf("%d\n", r);
-  r = power(1024,1);
+  r = power(1024,0);
   printf("%d\n", r);
-  r = power(25333334, 160);
+  r = power(23435655, 1654567);
   printf("%d\n", r);
   r = power(5, 2);
   printf("%d\n", r);

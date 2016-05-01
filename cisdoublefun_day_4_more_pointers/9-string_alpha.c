@@ -1,3 +1,4 @@
+/*checks if a string contains only alphabetical characters*/
 int string_alpha(char *s)
 {
   int i, t;

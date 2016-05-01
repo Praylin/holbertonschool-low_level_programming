@@ -1,3 +1,4 @@
+/*Convert string to lowercase*/
 char *lowercase_string(char *s)
 {
   int i;
