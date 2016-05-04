@@ -1,0 +1,19 @@
+char *string_dup(char *str)
+{
+  int i = 0;
+  int count;
+  char *dup;
+  while(str[i] != '\0')
+    {
+      i++;
+    }
+  count = i + 1;
+  i = 0;
+  dup = malloc(count * sizeof(char));
+  while(i < count)
+    {
+      dup[i] = str[i];
+      i++;
+    }
+  return dup;
+}
