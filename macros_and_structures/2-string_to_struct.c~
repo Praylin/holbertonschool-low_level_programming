@@ -1,0 +1,23 @@
+#include "str_struct.h"
+#include<stdlib.h>
+#include<stdio.h>
+struct String *string_to_struct(char *str)
+{
+  struct String *var;
+  int i;
+
+  var = malloc(sizeof(struct String));
+  if (var == NULL)
+    {
+      printf("NULL");
+      return (NULL);
+    }
+  var->str = str;
+  printf("%s", var->str);
+  for(i = 0; i != str[i]; i++);
+  var->length = i;
+  printf("%d",var->length);
+  printf("%d",i);
+  return(var);
+}
+  

@@ -1,0 +1,15 @@
+#include "str_struct.h"
+#include <stdlib.h>
+struct String *string_to_struct(char *str)
+{
+  struct String *obj;
+  int i;
+
+  obj = malloc(sizeof(struct String));
+  if (obj == NULL)
+    return (NULL);
+  obj->str = str;
+  for(i = 0; str[i] != '\0'; i++);
+  obj->length = i;
+  return(obj);
+}
