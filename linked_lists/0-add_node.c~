@@ -1,0 +1,15 @@
+#include <stdlib.h>
+#include "list.h"
+/*
+allocates a new node and links it to the to a list
+*/
+int add_node(List **list, char *str)
+{
+  List *head = NULL;
+  head = malloc(sizeof(List));
+  if(head == NULL)
+    return (1);
+  List->str = str;
+  List->next = NULL;
+  return (0);
+}
