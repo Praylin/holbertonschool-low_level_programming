@@ -1,16 +1,21 @@
 #include <stdlib.h>
 #include "list.h"
+#include <stdio.h>
 
 int add_node(List **list, char *str);
 
 int main(void)
 {
   List *list;
+  int res1;
+  int res2;
 
   list = NULL;
-  if (add_node(&list, "Holberton") == 1)
-    return (1);
-  if (add_node(&list, "School") == 1)
-    return (1);
+  res1 = add_node(&list, "Holberton");
+  printf ("%d\n", res1);
+/* return (1);*/
+  res2 = add_node(&list, "School");
+  /*    return (1);*/
+  printf("%d\n", res2);
   return (0);
 }

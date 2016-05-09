@@ -1,0 +1,65 @@
+#include <stdlib.h>
+#include "list.h"
+int find_len(char *av);
+char *copy(char *av, int len);
+/*
+Function that creates a new list from the command line arguments.
+*/
+List *params_to_list(int ac, char **av)
+{
+  int i;
+  List *node;
+  List *head;
+  char *new_str;
+  int len;
+  List *temp;
+  
+  len = 0;
+  head = NULL;
+  node = (List *)malloc(sizeof(List));
+  if(node == NULL) /*If memory allocation fails*/
+    return (NULL);
+  len = find_len(av[0]);
+  new_str = copy(av[0], len);
+  node->str = new_str;
+  node->next = NULL;
+  head = node;
+  temp = head;
+  for(i = 1; i < ac; i++)
+    {
+      node = (List *)malloc(sizeof(List));
+      if(node == NULL) /*If memory allocation fails*/
+	return (NULL);
+      len = find_len(av[i]);;
+      new_str = copy(av[i], len);
+      node->str = new_str;
+      node->next = NULL;
+      while(temp->next != NULL)
+	{
+	  temp = temp->next;
+	}
+      temp->next = temp;
+    }
+  return (head);
+}
+
+int find_len(char *av)
+{
+  int i;
+
+  for(i = 0; av[i] != '\0'; i++);
+  return (i);
+}
+
+char *copy(char *av, int len)
+{
+  int i;
+  char *new_str;
+
+  new_str = malloc((len + 1) * sizeof(av));
+  if(new_str == NULL) /*If memory allocation fails*/
+    return (NULL);
+  for( i = 0; av[i] != '\0'; i++)
+    new_str[i] = av[i];
+  return (new_str);
+}

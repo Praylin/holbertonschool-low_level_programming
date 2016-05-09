@@ -1,0 +1,33 @@
+#include "list.h"
+
+void rev_list(List **list)
+{
+  List *prev;
+  List *current;
+  List *next;
+  int length;
+  int i;
+
+  prev = NULL;
+  current = *list;
+  
+  /*length = 0;
+  while(temp->next != NULL) For traversing through the lists and finding the number of nodes*/
+    /* {
+      temp = temp->next;
+      length++;
+    }
+  for(i = length; i > 0; i--)
+    {
+      struct node* prev   = NULL;
+      struct node* current = *head_ref;
+      struct node* next;*/
+      while (current != NULL)
+	{
+	  next  = current->next;  
+	  current->next = prev;   
+	  prev = current;
+	  current = next;
+	}
+      *list = prev;
+}

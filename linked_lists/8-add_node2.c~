@@ -1,0 +1,25 @@
+#include "list.h"
+#include<stdlib.h>
+/*
+Function that allocates a new node and links it to the end of the list
+*/
+int add_node(List **list, char *content)
+{
+  List *node;
+  int i;
+  char *new_string;
+
+  node = malloc(sizeof(List));
+  if(node == NULL)
+    return (1);
+  for(i = 0; content[i] != '\0'; i++);
+  new_string = malloc((i+1) * sizeof(char));
+  if(new_string == NULL)
+    return (1);
+  for(i= 0; content[i] != '\0'; i++)
+    new_string[i] = content[i];
+  node->str = new_string;
+  node->next = NULL; 
+  *list = node;
+  return (0);
+}

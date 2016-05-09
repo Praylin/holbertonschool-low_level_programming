@@ -1,0 +1,51 @@
+#include <stdlib.h>
+#include "list.h"
+
+char *copy(char *content, int len);
+int find_len(char *content);
+int insert_in_list(List **list, char *content, int index)
+{
+  List *temp;
+  int length;
+  int i;
+  int str_len;
+  
+  temp = list;
+  length = 0;
+  while(temp->next != NULL) /*For traversing through the lists and finding the number of nodes*/
+    {
+      temp = temp->next;
+      length++;
+    }
+  temp = list;
+  if(index < 0)
+    return 0;
+  else
+    {
+      temp = (List *)malloc(sizeof(List));
+      str_len = find_len(content);
+      temp->str = copy(content);
+  
+    }
+}
+
+char *copy(char *content, int len)
+{
+  int i;
+  char *new_str;
+
+  new_str = malloc((len + 1) * sizeof(av));
+  if(new_str == NULL) /*If memory allocation fails*/
+    return (NULL);
+  for( i = 0; av[i] != '\0'; i++)
+    new_str[i] = av[i];
+  return (new_str);
+}
+
+int find_len(char *av)
+{
+  int i;
+
+  for(i = 0; av[i] != '\0'; i++);
+  return (i);
+}

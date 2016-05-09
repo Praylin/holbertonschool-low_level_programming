@@ -1,0 +1,15 @@
+#include "list.h"
+#include <stddef.h>
+#include <stdio.h>
+
+void print_list(List *list)
+{
+  List *temp;
+  
+  temp = list;
+  while(temp->next != NULL) /*For traversing through the lists*/
+    {
+      printf("%s\n",temp->str);
+      temp = temp->next;
+    }
+}

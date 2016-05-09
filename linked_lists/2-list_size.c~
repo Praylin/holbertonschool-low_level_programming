@@ -1,0 +1,15 @@
+#include "list.h"
+
+int list_size(List *list);
+{
+  List *temp;
+  int count;
+
+  count = 0;
+  while(temp->next != NULL) /*For traversing through the lists*/
+    {
+      temp = temp->next;
+      count++;
+    }
+  return(count);
+}
