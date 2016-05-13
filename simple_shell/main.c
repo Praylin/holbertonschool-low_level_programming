@@ -9,12 +9,13 @@
 int print_char(char c);
 char *read_line(const int fd);
 int read_char(char c, int fd); 
-int main(int ac, char **argv, char **env)
+int main(int ac , char **argv, char **env)
 {
   char *command;
   pid_t pid;
   char *exec_argv[] = {"/bin/ls", "-la", NULL};
   int status;
+  char c = '\0';
 
   print_char('$');
   command = read_line(0);
@@ -44,7 +45,6 @@ char *read_line(const int fd)
   
 
   bufsize = BUF_SIZE;              
-  printf("%d", bufsize);
   buffer = malloc(bufsize * sizeof(char));                                                                                                             
   if(buffer == NULL)                                                                                                                                     
     {                                                                                                                                                    
