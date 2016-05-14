@@ -1,0 +1,25 @@
+#include <stdio.h>
+int main()
+{
+  char *command;
+  char *command_slash;
+
+  command = "ls";
+  command_slash = concat_strings(command, "ls");
+  printf("%s", command_slash);
+  return(0);
+}
+
+char *concat_strings(char *dest, const char *src)
+{
+  int i, count = 0, j;
+  for (i = 0; dest[i] != '\0' ; i++)
+    {
+      count++;
+    }
+  for (i = count, j = 0; src[j] != '\0'; i++, j++)
+    {
+      dest[i] = src[j];
+    }
+  return dest;
+}
