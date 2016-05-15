@@ -1,0 +1,12 @@
+#include <unistd.h>
+#include <stdio.h>
+
+int main()
+{
+  const char *path = "/bin/cat";
+  int validation;
+  
+  validation = access(path, F_OK);
+  printf("%d\n", validation);
+  return(0);
+}

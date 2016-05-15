@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include <sys/wait.h>
 #include "libshell/libshell.h"
 # define BUF_SIZE 4
 
@@ -12,19 +14,21 @@ void execute_command(char *command);
 char *extract_path(char **env);
 int strings_n_compare(char *s1, const char *s, size_t n);
 char **string_split(const char *str, char separator);
-char *validate_command(char **path_array, char *command);
+int validate_command(const char *whole_path);
 char *concat_strings(char *dest, const char *src);
-int main(int ac , char **argv, char **env)
+int main(__attribute__((unused)) int ac , __attribute__((unused)) char **argv, char **env)
 {
   char *command;
   char *path;
   char **path_array;
-  char *command_path;
   char **separate_path;
   char *slash_command;
   char slash[20] = "/";
   int i;
+  char *whole_path;
+  int validation;
   
+  validation = 0;
   command = NULL;
   while(1)
     {
@@ -40,7 +44,18 @@ int main(int ac , char **argv, char **env)
 	printf("SEPARATE PATHS = %s\n", separate_path[i]);
       slash_command = concat_strings(slash, command);
       printf("SLASH_COMMAND = %s\n", slash_command);
-      command_path = validate_command(separate_path, slash_command);
+      /* command_path = validate_command(separate_path, slash_command);*/
+      for(i = 0; separate_path[i] != '\0'; i++)
+	{
+	  whole_path = concat_strings(separate_path[i], slash_command);
+	  printf("WHOLE_PATH = %lu\n", strlen(whole_path));
+	  validation = validate_command(whole_path);
+	  /* printf("validation = %d\n", validation);*/
+	  if(validation == 0)
+	    execute_command(whole_path);
+	  else
+	    printf("%s : Command not found", command); 
+	}
       execute_command(slash_command);
       free(command);
     }
@@ -68,7 +83,8 @@ char *read_line(const int fd)
     }
     rd = read (fd, buffer, bufsize); 
     if(rd == -1)                                                                                                                                               return NULL;
-    buffer[rd + 1] = '\0';
+    buffer[rd-1] = '\0'; /*To remove the new line from the buffer*/
+    printf("buffer = %s\n", buffer);
   return buffer;
 }
 
@@ -76,11 +92,10 @@ char *read_line(const int fd)
 void execute_command(char *command)
 {
   pid_t pid;
-  char *path;
   char *exec_argv[3];
   int status;
 
-  exec_argv[0] = "/bin/ls";
+  exec_argv[0] = command;
   exec_argv[1] = "-la";
   exec_argv[2] = NULL;
   if((pid = fork()) == -1)
@@ -137,27 +152,15 @@ int strings_n_compare(char *s1, const char *s, size_t n)
 }
 
 /*Checks whether a command is valid or not. If valid, returns the path else, return NULL*/
-char *validate_command(char **path_array, char *command)
+int validate_command(const char *whole_path)
 {
-  int i;
-  char *path;
-  int flag;
-  DIR *dir;
-  
-  for(i = 0; path_array[i] != 0; i++)
-    {
-      path = path_array[i];
-      dir = opendir(path);
-      if(dir == NULL)
-	printf("No directory");
-      else
-	printf("%s\n", path);
-      /* flag = access(path, F_OK);
-      if(flag == 0)
-      return path;*/
- }
-  return path;
-}
+  int validation;
+
+  printf("inside_validation: %s\n", whole_path);
+  validation = access(whole_path, F_OK);
+  printf("%d\n", validation);
+  return validation;
+  }
 
 /*Concatenate strings*/
 char *concat_strings(char *dest, const char *src)
