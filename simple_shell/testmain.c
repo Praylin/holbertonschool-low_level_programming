@@ -6,11 +6,11 @@
 #include <dirent.h>
 #include <sys/wait.h>
 #include "libshell/libshell.h"
-# define BUF_SIZE 128
+# define BUF_SIZE 8
 
 int print_char(char c);
 char *read_line(const int fd);
-void execute_command(char *command, char *split_command);
+int execute_command(char *command, char *split_command);
 char *extract_path(char **env);
 int strings_n_compare(char *s1, const char *s, size_t n);
 char **string_split(const char *str, char separator);
@@ -25,38 +25,40 @@ int main(__attribute__((unused)) int ac , __attribute__((unused)) char **argv, c
   char **separate_path;
   char *slash_command;
   char slash[20] = "/";
-  int i;
+  int i = 0;
   char *whole_path;
   int validation;
   char **split_command;
+  int status;
+  char *valid_command;
   
+  status = 0;
   validation = 0;
-  command = NULL;
   while(1)
     {
       print_char('$');
+      command = NULL;
       command = read_line(0);
+      /*printf("%s", command);*/
       if(strings_compare(command, "env") == 0)
 	{
 	  for(i = 0; env[i] != '\0'; i++)
 	    printf("%s\n", env[i]);
+	  free(command);
 	}
-      else if(strings_compare(command, "exit") == 0)
+      else if(strings_n_compare(command, "exit", 4) == 0)
 	{
 	  free(command);
 	  exit(0);
 	}
-      /* else if(strings_compare(command, "exit [0]") == 0)
-	{
-	  free(command);
-	  exit(0);
-	  }*/
+      else if(strings_compare(command, "echo $?") == 0)
+	printf("%d\n", status);
       else
 	{
 	  split_command = string_split(command, ' ');
-	  for(i = 0; split_command[i] != '\0'; i++)
-	    printf("Splitted commands= %s\n", split_command[i]);
-	  /* printf("Command = %s\n", command);*/
+	  /* for(i = 0; split_command[i] != '\0'; i++)
+	     printf("Splitted commands= %s\n", split_command[i]);
+	   printf("Command = %s\n", command);*/
 	  path = extract_path(env);
 	  /* printf("$PATH = %s\n", path);*/
 	  path_array = string_split(path, '=');
@@ -72,14 +74,28 @@ int main(__attribute__((unused)) int ac , __attribute__((unused)) char **argv, c
 	      /* printf("WHOLE_PATH = %lu\n", strlen(whole_path));*/
 	      validation = validate_command(whole_path);
 	      /* printf("validation = %d\n", validation);*/
-	      if(validation == 0)
-		execute_command(whole_path, split_command[1]);
-	      else
-		printf("%s : Command not found", command); 
+	       if(validation == 0)
+		{
+		  /* status =  execute_command(whole_path, split_command[1]);*/
+		  valid_command = whole_path;
+		  break;
+		}
+	       /* else
+		  valid_command = NULL;*/
+	   }
+	  if(validation != 0)
+	  /* if(valid_command == NULL)*/
+	    { 
+	      printf("%s: Command not found", command);
 	    }
+	  status = execute_command(valid_command, split_command[1]);
+	  free(command);
+	  free(split_command);
 	}
-      free(command);
+      /* if(validation != 0)
+	 printf("%s: Command not found", command);*/
     }
+  free(command);
   return (0);
 }
 
@@ -106,14 +122,15 @@ char *read_line(const int fd)
     if(rd == -1)                                                                                                                                               return NULL;
     buffer[rd-1] = '\0'; /*To remove the new line from the buffer*/
     /* printf("buffer = %s\n", buffer);*/
-  return buffer;
-}
+ return buffer;
+   }
 
 /*Execute a command. Currently the command and the path is given inside the function*/
-void execute_command(char *command, char *split_command)
+int execute_command(char *command, char *split_command)
 {
   pid_t pid;
   char *exec_argv[3];
+  int exec;
   int status;
 
   exec_argv[0] = command;
@@ -126,13 +143,18 @@ void execute_command(char *command, char *split_command)
   if(pid == 0)
     {
       /* printf("%s", command);*/
-      execve(exec_argv[0], exec_argv, NULL);
+     exec = execve(exec_argv[0], exec_argv, NULL);
+     if(exec == -1)
+       perror("Execve");
+     exit(0);
+     return (0);
     }
   else
     {
       wait(&status);
       printf("Child terminated");
-    }
+   } 
+  return (0);
 }
 
 /*Extract $PATH from env variable*/
