@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "list.h"
+
+print_dl_list(List **list) {
+  struct Node* temp = list;
+  while(temp != NULL) {
+    printf("%d ",temp->data);
+    temp = temp->next;
+  }
+  printf("\n");
+}

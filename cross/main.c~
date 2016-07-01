@@ -1,0 +1,11 @@
+int main (int argc, char *argv[])
+{
+  int num;
+
+  if (argc == 2)
+    {
+      num = argv[1];
+      print_char(num + '0');
+    }
+  return (0);
+}
