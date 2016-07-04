@@ -3,30 +3,25 @@
 #include "list.h"
 #include <stdio.h>
 
-int add_end_dl_list(__attribute__((unused))List **list, char *str) 
+int add_end_dl_list(List **list, char *str) 
 {
   struct List* temp = *list;
+  /*Creating new node*/
   struct List* newNode = (struct List*)malloc(sizeof(struct List));
-  /*printf("%s", str); */
   newNode->str = strdup(str);
-  /* printf("\n%s", (newNode)->str);*/
   newNode->prev = NULL;
   newNode->next = NULL;
+  /*If list is empty*/
   if (*list == NULL) {
-    /* (*list)->prev = NULL;
-       (*list)->next = NULL;*/
    *list = newNode;
-   /* printf("\nentering the loop");*/
    return 0;
   }
-   else
-    {
+  /*If list is not empty, loop till the last node and then add the new node*/
   while(temp->next != NULL) 
     temp = temp->next;
   temp->next = newNode;
   newNode->prev = temp;
   newNode->next = NULL;
-  }
   return 0;
 }
 

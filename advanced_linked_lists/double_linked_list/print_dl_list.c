@@ -3,12 +3,13 @@
 #include <stdlib.h>
 #include "list.h"
 
+void print_string(char *str);
 void print_dl_list(List *list) {
   List *ptr;
   ptr = list;
   while(ptr != NULL) {
-    printf("%s ",ptr->str);
+    print_string(ptr->str);
     ptr = ptr->next;
   }
-  printf("\n");
+  print_char("\n");
 }
