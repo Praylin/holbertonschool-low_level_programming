@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include "hashtable.h"
+HashTable *ht_create(unsigned int size);
+int print_hashtable(HashTable *ht);
+
+int main()
+{
+  unsigned int ht_size;
+  HashTable *addr;
+  ht_size = 5;
+  HashTable addr = ht_create(ht_size);
+  print_hashtable(addr);
+  printf("%ui", ht_size);
+  return 0;
+}
