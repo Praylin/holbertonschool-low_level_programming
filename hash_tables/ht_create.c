@@ -19,7 +19,7 @@ HashTable *ht_create(unsigned int size)
   if(new_table->array == NULL)
     return NULL;
   /* Initialize the elements of the table */
-  for(i=0; i<size; i++) 
+  for(i = 0; i < size; i++) 
     new_table->array[i] = NULL;
   /* Set the table's size */
   new_table->size = size;

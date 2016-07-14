@@ -2,11 +2,16 @@
 #include "hashtable.h"
 HashTable *ht_create(unsigned int size);
 int print_hashtable(HashTable *ht);
+int ht_put(HashTable *hashtable, const char *key, const char *value);
+/*unsigned int hash(const char *key, unsigned int size);*/
 
 int main()
 {
   HashTable *addr = ht_create(5);
+  int index;
   print_hashtable(addr);
+  index = ht_put(addr, "a", "abcd");
+  printf("%d", index);
   return 0;
 }
 
