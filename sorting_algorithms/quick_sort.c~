@@ -1,0 +1,19 @@
+void quick_sort(int *array, int size) {
+  int pivot,i, count = 0;
+  int temp, pivot_index;
+  pivot = array[0];
+  for(i = 2; i < size; i++) { 
+    if (pivot > array[i]) {
+      temp = array[i];
+      array[i] = array[i-count];
+      array[i-count] = temp;
+      count = count - 1;
+    }
+    else
+      count++;
+  }
+  temp = array[i-count-1];
+  array[i-count-1] = array[0];
+  array[0] = temp;
+  pivot_index = i-count-1;
+}
